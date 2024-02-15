@@ -1,19 +1,19 @@
 CREATE TABLE IF NOT EXISTS Album (
 	id SERIAL primary KEY,
 	name VARCHAR(80) NOT NULL,
-	year date NOT null check (year > 01.1900)
+	year date NOT null check (year > '1900.01.01')
 );
 
 CREATE TABLE IF NOT EXISTS Collection (
 	id SERIAL primary key,
 	name VARCHAR(80) not null,
-	year date NOT null check (year > 01.1900)
+	year date NOT null check (year > '1900.01.01')
 	);
 
 CREATE TABLE IF NOT EXISTS Track (
 	id SERIAL primary KEY,
 	name VARCHAR(80) NOT NULL,
-	length INTEGER NOT NULL,
+	length time NOT NULL,
 	album_id INTEGER NOT NULL references Album(id)
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS Artist (
 
 CREATE TABLE IF NOT EXISTS Genre (
 	id SERIAL primary key,
-	name VARCHAR(80) not null
+	name VARCHAR(80) UNIQUE not null
 );
 
 CREATE TABLE IF NOT EXISTS Artist_Genre (
