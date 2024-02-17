@@ -14,31 +14,41 @@ where year between '2018-01-01' and '2020-12-31';
 select name from artist
 where name not like '% %';
 
---Название треков, которые содержат слово «мой» или «my»(+):
+--Название треков, которые содержат слово «мой» или «my»(Исправлено+):
 select name from track
-where name like '%My %' or name like '%my %';
+where name ilike 'my %' or name ilike '% my' or name ilike '% my %' or name ilike 'my';
+
+--Другой способ выборки "my"(Добавлено+):
+select name from track
+where string_to_array(name, ' ') && array['My', 'my'];
+
+--Другой способ выборки "my"(Добавлено+):
+select name from track
+where name ~* '\mmy' and name ~* 'my\M'
 
 --Количество исполнителей в каждом жанре(+):
 SELECT name, COUNT(*) FROM genre
 join artist_genre on genre.id = artist_genre.genre_id
 group by genre.id
 
---Количество треков, вошедших в альбомы 2019–2020 годов(+)
-SELECT album.name, COUNT(*) from album
+--Количество треков, вошедших в альбомы 2019–2020 годов(Исправлено+):
+SELECT COUNT(*) from album
 join track on album.id = track.album_id 
-where album.year between '2019-01-01' and '2020-12-31'
-group by album.id;
+where album.year between '2019-01-01' and '2020-12-31';
 
 --Средняя продолжительность треков по каждому альбому(+):
 select album.name, avg(track.length) from album
 left join track on album.id = track.album_id
 group by album.name;
 
---Все исполнители, которые не выпустили альбомы в 2020 году(+):
+--Все исполнители, которые не выпустили альбомы в 2020 году(Исправлено+):
 select artist.name from artist
-join album_artist on artist.id = album_artist.artist_id
-join album on album_artist.album_id = album.id
-where album.year <= '2019-12-31' or album.year >= '2021-01-01'
+where artist.name not in (
+	select artist.name from artist
+	join album_artist on artist.id = album_artist.artist_id
+	join album on album_artist.album_id = album.id
+	where album.year between '2020-01-01' and '2020-12-31'
+);
 
 --Названия сборников, в которых присутствует конкретный исполнитель AC/BC(+):
 select distinct collection.name, artist.name from collection

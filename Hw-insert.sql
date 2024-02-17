@@ -1,212 +1,116 @@
-INSERT INTO album(name, year)
-VALUES('White album', '2018-02-14');
-INSERT INTO album(name, year)
-VALUES('Best album', '2019-07-01');
-INSERT INTO album(name, year)
-VALUES('Platinum album', '2020-08-01');
-INSERT INTO album(name, year)
-VALUES('New album', '2021-01-01');
-INSERT INTO album(name, year)
-VALUES('Dead album', '2016-10-31');
+--Исправлено множественное добавление:
+INSERT INTO album(name, year) values
+	('White album', '2018-02-14'),
+	('Best album', '2019-07-01'),
+	('Platinum album', '2020-08-01'),
+	('New album', '2021-01-01'),
+	('Dead album', '2016-10-31');
 
+INSERT INTO artist(name) values
+	('AC/BC'),
+	('Netologica'),
+	('Dipped In Purple'),
+	('Think Floyd'),
+	('Iron Maken');
 
-INSERT INTO artist(name)
-VALUES('AC/BC');
-INSERT INTO artist(name)
-VALUES('Netologica');
-INSERT INTO artist(name)
-VALUES('Dipped In Purple');
-INSERT INTO artist(name)
-VALUES('Think Floyd');
-INSERT INTO artist(name)
-VALUES('Iron Maken');
+INSERT INTO collection(name, year) values
+	('Ultra ballads', '2022-01-01'),
+	('Crazy hits', '2021-03-08'),
+	('The best songs', '2020-03-08'),
+	('Gold collection', '2023-01-01'),
+	('Newest tracks', '2024-02-14');
 
+INSERT INTO genre(name) values
+	('Hard Rock'),
+	('Punk Rock'),
+	('Pop Rock'),
+	('Post Rock');
 
-INSERT INTO collection(name, year)
-VALUES('Ultra ballads', '2022-01-01');
-INSERT INTO collection(name, year)
-VALUES('Crazy hits', '2021-03-08');
-INSERT INTO collection(name, year)
-VALUES('The best songs', '2020-03-08');
-INSERT INTO collection(name, year)
-VALUES('Gold collection', '2023-01-01');
-INSERT INTO collection(name, year)
-VALUES('Newest tracks', '2024-02-14');
+-- Добавлены имена треков для выборки по слову "my":
+INSERT INTO track(name, length, album_id) values
+	('my own', '00:03:00', 1),
+	('own my', '00:03:20', 2),
+	('my', '00:03:44', 3),
+	('oh my god', '00:02:59', 4),
+	('myself', '00:03:05', 5),
+	('by myself', '00:05:21', 1),
+	('bemy self', '00:03:33', 2),
+	('myself by', '00:03:59', 3),
+	('by myself by', '00:06:55', 4),
+	('beemy', '00:05:15', 5),
+	('premyne', '00:02:41', 1),
+	('The Message', '00:03:03', 2),
+	('Yesterday', '00:04:09', 3),
+	('Crazy', '00:05:39', 4),
+	('My Girl', '00:03:14', 5),
+	('Hot Stuff', '00:03:20', 1),
+	('Crazy in Love', '00:02:54', 2),
+	('Stand by Me', '00:04:44', 3),
+	('Rock and Roll Music', '00:05:40', 4),
+	('Your Song', '00:06:30', 1),
+	('Purple Rain', '00:01:50', 2),
+	('Earth Angel', '00:04:10', 3),
+	('Rave On', '00:02:11', 4),
+	('Bring the Noise', '00:03:00', 1),
+	('Fast Car', '00:05:23', 2),
+	('Dream On', '00:03:29', 3),
+	('Green Onions', '00:06:05', 1),
+	('Desolation Row', '00:05:41', 2),
+	('Peggy Sue', '00:04:52', 3),
+	('Maybe', '00:02:36', 1),
+	('Lean on Me', '00:04:47', 2),
+	('In My Room', '00:03:45', 1),
+	('Boom Boom', '00:04:49', 2),
+	('Only the Lonely', '00:02:25', 1),
+	('Everyday', '00:02:55', 1);
 
+INSERT INTO track_collection(track_id, collection_id) values
+	(1, 1),
+	(2, 2),
+	(3, 3),
+	(4, 4),
+	(5, 5),
+	(6, 1),
+	(7, 2),
+	(8, 3),
+	(9, 4),
+	(10, 5),
+	(11, 1),
+	(12, 2),
+	(13, 3),
+	(14, 4),
+	(15, 5),
+	(16, 1),
+	(17, 2),
+	(18, 3),
+	(19, 4),
+	(20, 5),
+	(21, 1),
+	(22, 2),
+	(23, 3),
+	(24, 4),
+	(25, 5),
+	(26, 1),
+	(27, 2),
+	(28, 3),
+	(29, 4),
+	(30, 5),
+	(31, 1),
+	(1, 2),
+	(2, 3),
+	(3, 4),
+	(4, 5);
 
-INSERT INTO genre(name)
-VALUES('Hard Rock');
-INSERT INTO genre(name)
-VALUES('Punk Rock');
-INSERT INTO genre(name)
-VALUES('Pop Rock');
-INSERT INTO genre(name)
-VALUES('Post Rock');
+INSERT INTO artist_genre(genre_id, artist_id) values
+	(1, 5),
+	(2, 4),
+	(3, 3),
+	(4, 2),
+	(3, 1);
 
-
-INSERT INTO track(name, length, album_id)
-VALUES('Imagine', '00:03:00', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('Respect', '00:03:20', 2);
-INSERT INTO track(name, length, album_id)
-VALUES('Johnny B. Bad', '00:03:44', 3);
-INSERT INTO track(name, length, album_id)
-VALUES('Hey Dude', '00:02:59', 4);
-INSERT INTO track(name, length, album_id)
-VALUES('My Generation', '00:03:05', 5);
-INSERT INTO track(name, length, album_id)
-VALUES('Yesterday', '00:05:21', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('In My Life', '00:03:33', 2);
-INSERT INTO track(name, length, album_id)
-VALUES('Stairway to Hell', '00:03:59', 3);
-INSERT INTO track(name, length, album_id)
-VALUES('One', '00:06:55', 4);
-INSERT INTO track(name, length, album_id)
-VALUES('The Weight', '00:05:15', 5);
-INSERT INTO track(name, length, album_id)
-VALUES('Heroes', '00:02:41', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('The Message', '00:03:03', 2);
-INSERT INTO track(name, length, album_id)
-VALUES('Crying', '00:04:09', 3);
-INSERT INTO track(name, length, album_id)
-VALUES('Crazy', '00:05:39', 4);
-INSERT INTO track(name, length, album_id)
-VALUES('My Girl', '00:03:14', 5);
-INSERT INTO track(name, length, album_id)
-VALUES('Hot Stuff', '00:03:50', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('Crazy in Love', '00:02:54', 2);
-INSERT INTO track(name, length, album_id)
-VALUES('Stand by Me', '00:04:44', 3);
-INSERT INTO track(name, length, album_id)
-VALUES('Rock and Roll Music', '00:05:40', 4);
-INSERT INTO track(name, length, album_id)
-VALUES('Your Song', '00:06:30', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('Purple Rain', '00:01:50', 2);
-INSERT INTO track(name, length, album_id)
-VALUES('Earth Angel', '00:04:10', 3);
-INSERT INTO track(name, length, album_id)
-VALUES('Rave On', '00:02:11', 4);
-INSERT INTO track(name, length, album_id)
-VALUES('Bring the Noise', '00:03:00', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('Fast Car', '00:05:23', 2);
-INSERT INTO track(name, length, album_id)
-VALUES('Dream On', '00:03:59', 3);
-INSERT INTO track(name, length, album_id)
-VALUES('Green Onions', '00:06:05', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('Desolation Row', '00:05:41', 2);
-INSERT INTO track(name, length, album_id)
-VALUES('Peggy Sue', '00:04:52', 3);
-INSERT INTO track(name, length, album_id)
-VALUES('Maybe', '00:02:36', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('Lean on Me', '00:04:47', 2);
-INSERT INTO track(name, length, album_id)
-VALUES('In My Room', '00:03:45', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('Boom Boom', '00:04:49', 2);
-INSERT INTO track(name, length, album_id)
-VALUES('Only the Lonely', '00:02:25', 1);
-INSERT INTO track(name, length, album_id)
-VALUES('Everyday', '00:02:55', 1);
-
-
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(1, 1);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(2, 2);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(3, 3);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(4, 4);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(5, 5);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(6, 1);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(7, 2);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(8, 3);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(9, 4);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(10, 5);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(11, 1);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(12, 2);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(13, 3);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(14, 4);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(15, 5);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(16, 1);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(17, 2);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(18, 3);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(19, 4);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(20, 5);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(21, 1);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(22, 2);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(23, 3);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(24, 4);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(25, 5);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(26, 1);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(27, 2);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(28, 3);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(29, 4);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(30, 5);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(31, 1);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(1, 2);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(2, 3);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(3, 4);
-INSERT INTO track_collection(track_id, collection_id)
-VALUES(4, 5);
-
-
-INSERT INTO artist_genre(genre_id, artist_id)
-VALUES(1, 5);
-INSERT INTO artist_genre(genre_id, artist_id)
-VALUES(2, 4);
-INSERT INTO artist_genre(genre_id, artist_id)
-VALUES(3, 3);
-INSERT INTO artist_genre(genre_id, artist_id)
-VALUES(4, 2);
-INSERT INTO artist_genre(genre_id, artist_id)
-VALUES(3, 1);
-
-
-INSERT INTO album_artist(album_id, artist_id)
-VALUES(1, 5);
-INSERT INTO album_artist(album_id, artist_id)
-VALUES(2, 4);
-INSERT INTO album_artist(album_id, artist_id)
-VALUES(3, 3);
-INSERT INTO album_artist(album_id, artist_id)
-VALUES(4, 2);
-INSERT INTO album_artist(album_id, artist_id)
-VALUES(5, 1);
+INSERT INTO album_artist(album_id, artist_id) values
+	(1, 5),
+	(2, 4),
+	(3, 3),
+	(4, 2),
+	(5, 1);
